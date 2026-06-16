@@ -47,6 +47,24 @@ a { text-decoration: none; color: inherit; }
 button { font-family: 'DM Sans', 'Segoe UI', sans-serif; cursor: pointer; }
 input, textarea, select { font-family: 'DM Sans', 'Segoe UI', sans-serif; }
 
+#add-product-form input,
+#add-product-form textarea,
+#add-product-form select,
+#edit-product-form input,
+#edit-product-form textarea,
+#edit-product-form select {
+  color: #111827;
+}
+
+#add-product-form input::placeholder,
+#add-product-form textarea::placeholder,
+#add-product-form select::placeholder,
+#edit-product-form input::placeholder,
+#edit-product-form textarea::placeholder,
+#edit-product-form select::placeholder {
+  color: #6b7280;
+}
+
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }

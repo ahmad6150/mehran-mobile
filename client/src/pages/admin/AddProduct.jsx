@@ -47,6 +47,9 @@ const AddProduct = () => {
     if (!name || !description || !price || !category || !brand || !stock) {
       return toast.error('Please fill all required fields')
     }
+    if (images.length === 0) {
+      return toast.error('Please upload at least one image')
+    }
 
     try {
       setLoading(true)
@@ -73,9 +76,9 @@ const AddProduct = () => {
       <AdminSidebar />
 
       <div className="flex-1 overflow-auto">
-
-        {/* Header */}
-        <div className="bg-white border-b px-6 py-4 sticky top-0 z-10">
+        <form id="add-product-form" onSubmit={handleSubmit} encType="multipart/form-data" className="text-gray-900">
+          {/* Header */}
+          <div className="bg-white border-b px-6 py-4 sticky top-0 z-10">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center justify-between">
             <div className="flex items-center gap-3">
               <button
@@ -90,7 +93,7 @@ const AddProduct = () => {
               </div>
             </div>
             <button
-              onClick={handleSubmit}
+              type="submit"
               disabled={loading}
               className="bg-orange-600 hover:bg-orange-700 text-white px-5 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-2 transition disabled:opacity-50"
             >
@@ -105,8 +108,7 @@ const AddProduct = () => {
         </div>
 
         <div className="p-6">
-          <form onSubmit={handleSubmit}>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
               {/* Left — Main Info */}
               <div className="lg:col-span-2 space-y-6">
@@ -298,8 +300,8 @@ const AddProduct = () => {
                 </div>
               </div>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
   )

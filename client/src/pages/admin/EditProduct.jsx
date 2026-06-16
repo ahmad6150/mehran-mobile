@@ -71,6 +71,13 @@ const EditProduct = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (!formData.name || !formData.description || !formData.price || !formData.category || !formData.brand || !formData.stock) {
+      return toast.error('Please fill all required fields')
+    }
+    if (newImages.length === 0 && existingImages.length === 0) {
+      return toast.error('Please have at least one image')
+    }
+
     try {
       setLoading(true)
       const data = new FormData()
@@ -101,6 +108,7 @@ const EditProduct = () => {
     <div className="flex min-h-full bg-gray-50">
       <AdminSidebar />
       <div className="flex-1 overflow-auto">
+        <form id="edit-product-form" onSubmit={handleSubmit} encType="multipart/form-data" className="text-gray-900">
 
         {/* Header */}
         <div className="bg-white border-b px-6 py-4 sticky top-0 z-10">
@@ -115,7 +123,7 @@ const EditProduct = () => {
               </div>
             </div>
             <button
-              onClick={handleSubmit}
+              type="submit"
               disabled={loading}
               className="bg-orange-600 hover:bg-orange-700 text-white px-5 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-2 transition disabled:opacity-50"
             >
@@ -126,8 +134,7 @@ const EditProduct = () => {
         </div>
 
         <div className="p-6">
-          <form onSubmit={handleSubmit}>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
               {/* Left */}
               <div className="lg:col-span-2 space-y-6">
@@ -249,8 +256,8 @@ const EditProduct = () => {
                 </div>
               </div>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
   )
