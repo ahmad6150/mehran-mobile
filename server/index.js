@@ -50,13 +50,10 @@ if (!process.env.MONGO_URI || process.env.MONGO_URI.includes('your_mongodb')) {
   console.log('MONGO_URI not set or placeholder detected; skipping MongoDB connection.');
 }
 
-// CRITICAL FOR VERCEL: Local computer par server chalega, Vercel par iski zaroorat nahi hoti
 const PORT = process.env.PORT || 5000;
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(PORT, () => {
-    console.log(`Mehran Mobile server running on port ${PORT}`);
-  });
-}
+app.listen(PORT, () => {
+  console.log(`Mehran Mobile server running on port ${PORT}`);
+});
 
 // Vercel serverless environment ke liye app export karna lazmi hai
 export default app;
