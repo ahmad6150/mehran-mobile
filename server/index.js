@@ -28,9 +28,9 @@ app.use(
 
 app.use(express.json());
 
-// CORS Configuration: Localhost aur Production Vercel URL dono ko handle karega
+// CORS Configuration
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: ['https://mehran-mobile.vercel.app', 'http://localhost:5173'],
   credentials: true,
 }));
 
@@ -39,7 +39,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/payment', paymentRoutes);
-app.use('/api/upload', uploadRoutes); // Upload route missing tha, woh bhi add kar diya
+app.use('/api/upload', uploadRoutes);
 
 // Health check
 app.get('/', (req, res) => {
@@ -50,7 +50,6 @@ if (!process.env.MONGO_URI || process.env.MONGO_URI.includes('your_mongodb')) {
   console.log('MONGO_URI not set or placeholder detected; skipping MongoDB connection.');
 }
 
-// CRITICAL FOR VERCEL: Local computer par server chalega, Vercel par iski zaroorat nahi hoti
 const PORT = process.env.PORT || 5000;
 if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, () => {
@@ -58,5 +57,4 @@ if (process.env.NODE_ENV !== 'production') {
   });
 }
 
-// Vercel serverless environment ke liye app export karna lazmi hai
 export default app;
