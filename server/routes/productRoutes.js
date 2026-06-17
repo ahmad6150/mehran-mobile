@@ -22,16 +22,16 @@ const router = express.Router();
 router.get('/', getProducts);
 router.get('/featured', getFeaturedProducts);
 router.get('/category/:category', getProductsByCategory);
-router.get('/:id', getProductById);
-
-// Private routes
-router.post('/:id/reviews', protect, createProductReview);
 
 // Admin routes
 router.get('/admin/all', protect, admin, getAdminProducts);
 router.post('/', protect, admin, upload.array('images', 5), createProduct);
 router.put('/:id', protect, admin, upload.array('images', 5), updateProduct);
-router.delete('/:id', protect, admin, deleteProduct);
 router.delete('/:id/images/:public_id', protect, admin, deleteProductImage);
+router.delete('/:id', protect, admin, deleteProduct);
+
+// Public/private detail routes
+router.get('/:id', getProductById);
+router.post('/:id/reviews', protect, createProductReview);
 
 export default router;
