@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../../redux/slices/productSlice'
 import { FiArrowRight } from 'react-icons/fi'
+import phoneImage from '../../assets/image-phone.jfif'
+import chargerImage from '../../assets/chargerimage.jfif'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -48,7 +50,7 @@ const Home = () => {
         <div className="grid grid-cols-2 gap-4 h-[300px] lg:h-[340px]">
           <div className="relative overflow-hidden rounded-[2rem] shadow-[0_40px_80px_rgba(15,23,42,0.08)] border border-gray-100">
             <img
-              src="https://images.unsplash.com/photo-1510557880182-3d4d3b3b6c2f?auto=format&fit=crop&w=900&q=80"
+              src={phoneImage}
               alt="Premium smartphone"
               className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
             />
@@ -56,15 +58,15 @@ const Home = () => {
           <div className="grid gap-4">
             <div className="relative overflow-hidden rounded-[2rem] shadow-[0_30px_60px_rgba(15,23,42,0.08)] border border-gray-100 h-[148px] lg:h-[164px]">
               <img
-                src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=900&q=80"
+                src={chargerImage}
                 alt="Charger and cable"
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />
             </div>
             <div className="relative overflow-hidden rounded-[2rem] shadow-[0_30px_60px_rgba(15,23,42,0.08)] border border-gray-100 h-[148px] lg:h-[164px]">
               <img
-                src="https://images.unsplash.com/photo-1512499617640-c2f9996b4a8b?auto=format&fit=crop&w=900&q=80"
-                alt="Phone accessory set"
+                src="https://img.drz.lazcdn.com/static/pk/p/ebf4c3a0d6cfc35ce7292409f560d8fe.jpg_720x720q80.jpg_.webp"
+                alt="Mobile charger"
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />
             </div>
