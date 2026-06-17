@@ -34,8 +34,11 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
           {/* Logo */}
-          <Link to="/" className="flex-shrink-0">
-            <h1 className="text-xl font-bold text-gray-900 tracking-tight" style={{ fontFamily: 'Georgia, serif' }}>
+          <Link to="/" className="flex-shrink-0 group">
+            <h1
+              className="text-xl font-bold text-gray-900 tracking-tight transition group-hover:text-orange-600 cursor-pointer"
+              style={{ fontFamily: 'Georgia, serif' }}
+            >
               Mehran<span className="text-orange-600">Mobile</span>
             </h1>
           </Link>
@@ -175,7 +178,7 @@ const Navbar = () => {
               <Link
                 to="/login"
                 onClick={() => setMenuOpen(false)}
-                className="block text-sm font-semibold text-orange-600"
+                className="block text-sm font-semibold text-orange-600 hover:text-orange-700 transition"
               >
                 Login / Register
               </Link>
