@@ -51,10 +51,8 @@ if (!process.env.MONGO_URI || process.env.MONGO_URI.includes('your_mongodb')) {
 }
 
 const PORT = process.env.PORT || 5000;
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(PORT, () => {
-    console.log(`Mehran Mobile server running on port ${PORT}`);
-  });
-}
+app.listen(PORT, () => {
+  console.log(`Mehran Mobile server running on port ${PORT}`);
+});
 
 export default app;
